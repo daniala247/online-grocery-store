@@ -1,29 +1,36 @@
-// server.js
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const productRoutes = require('./routes/products');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const morgan = require('morgan');
+
+dotenv.config();
 
 const app = express();
+const port = process.env.PORT || 3000;
 
-// Middleware
-app.use(bodyParser.json());
-app.use(express.static('public'));
+// Middleware to parse JSON
+app.use(express.json());
 
-// MongoDB connection
-mongoose.connect('mongodb://localhost:27017/grocery-store', { useNewUrlParser: true, useUnifiedTopology: true });
+// Enable CORS
+app.use(cors());
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
+// Log incoming requests
+app.use(morgan('dev'));
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
     console.log('Connected to MongoDB');
+}).catch((error) => {
+    console.log('Error connecting to MongoDB:', error);
 });
 
-// Routes
-app.use('/api/products', productRoutes);
+// Use the product routes
+app.use('/api/products', require('./routes/products'));
 
-// Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
 });
