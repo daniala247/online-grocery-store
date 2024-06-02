@@ -1,22 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const server_url = "https://online-grocery-store-w7fa.vercel.app/api"
+    const server_url = "https://online-grocery-store-w7fa.vercel.app/api";
     const form = document.getElementById('add-product-form');
     const productList = document.getElementById('products');
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const name = form.name.value;
-        const price = form.price.value;
-        const category = form.category.value;
-
+        const formData = new FormData(form);
+        
         try {
-            const response = await fetch(server_url+'/products/add', {
+            const response = await fetch(`${server_url}/products/add`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ name, price, category })
+                body: formData
             });
 
             if (response.ok) {
@@ -33,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchProducts() {
         try {
-            const response = await fetch(server_url+'/products');
+            const response = await fetch(`${server_url}/products`);
             if (response.ok) {
                 const products = await response.json();
                 products.forEach(product => addProductToList(product));
@@ -47,7 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addProductToList(product) {
         const li = document.createElement('li');
-        li.textContent = `${product.name} - $${product.price} - ${product.category}`;
+        li.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" width="100">
+            <span>${product.name} - $${product.price} - ${product.category}</span>
+        `;
 
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
