@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', async () => {
+    const server_url = "http://localhost:3000/api";
     const productList = document.getElementById('products');
 
     async function fetchProducts() {
         try {
-            const response = await fetch('http://localhost:3000/api/products');
+            const response = await fetch(`${server_url}/products`);
             if (response.ok) {
                 const products = await response.json();
                 products.forEach(product => addProductToList(product));
@@ -17,24 +18,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function addProductToList(product) {
         const li = document.createElement('li');
-        li.textContent = `${product.name} - $${product.price} - ${product.category}`;
-
-        const addButton = document.createElement('button');
-        addButton.textContent = 'Add to Cart';
-        addButton.addEventListener('click', () => {
-            addToCart(product);
-        });
-
-        li.appendChild(addButton);
+        li.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" width="100">
+            <span>${product.name} - $${product.price} - ${product.category}</span>
+            <button onclick="addToCart('${product._id}')">Add to Cart</button>
+        `;
         productList.appendChild(li);
     }
 
-    function addToCart(product) {
+    window.addToCart = (productId) => {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push(product);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        alert('Product added to cart');
-    }
+        if (!cart.includes(productId)) {
+            cart.push(productId);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Product added to cart');
+        } else {
+            alert('Product is already in the cart');
+        }
+    };
 
     fetchProducts();
 });

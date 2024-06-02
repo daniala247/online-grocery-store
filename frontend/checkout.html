@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Online Grocery Store</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    <header>
+        <h1>Online Grocery Store</h1>
+        <nav>
+            <a href="index.html">Login/Register</a>
+            <a href="home.html">Home</a>
+            <a href="cart.html">Cart</a>
+            <a href="orders.html">Orders</a>
+        </nav>
+    </header>
+    <main>
+        <section id="checkout-form">
+            <h2>Checkout</h2>
+            <form id="add-checkout-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+                
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+                
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" required>
+                
+                <label for="zip">Zip Code:</label>
+                <input type="text" id="zip" name="zip" required>
+                
+                <button type="submit">Place Order</button>
+            </form>
+        </section>
+    </main>
+    <script src="checkout.js"></script>
+</body>
+</html>

@@ -30,35 +30,23 @@ main {
     padding: 20px;
 }
 
-#product-list ul {
+#orders ul {
     list-style: none;
     padding: 0;
 }
 
-#product-list li {
+#orders li {
     background-color: #fff;
-    padding: 10px;
+    padding: 15px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
-    display: flex;
-    align-items: center;
 }
 
-#product-list img {
-    margin-right: 15px;
+#orders h3 {
+    margin: 0 0 10px;
 }
 
-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #28a745;
-    color: white;
-    cursor: pointer;
-    margin-left: auto;
-}
-
-button:hover {
-    background-color: #218838;
+#orders p {
+    margin: 5px 0;
 }

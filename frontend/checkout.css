@@ -30,35 +30,32 @@ main {
     padding: 20px;
 }
 
-#product-list ul {
-    list-style: none;
-    padding: 0;
+form {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
 }
 
-#product-list li {
-    background-color: #fff;
+label {
+    text-align: right;
+    padding-top: 10px;
+}
+
+input {
     padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-}
-
-#product-list img {
-    margin-right: 15px;
+    font-size: 1em;
 }
 
 button {
+    grid-column: 2 / 3;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
-    background-color: #28a745;
+    background-color: #007bff;
     color: white;
     cursor: pointer;
-    margin-left: auto;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #0056b3;
 }

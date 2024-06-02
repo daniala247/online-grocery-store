@@ -13,6 +13,16 @@ header {
     text-align: center;
 }
 
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
 main {
     padding: 2em;
 }
@@ -61,6 +71,11 @@ button:hover {
     border: 1px solid #ddd;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+#product-list img {
+    margin-right: 15px;
 }
 
 #product-list button {
