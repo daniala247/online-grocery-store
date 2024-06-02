@@ -1,20 +1,38 @@
 const express = require('express');
+const Product = require('../models/Product');
 const router = express.Router();
-const productController = require('../controllers/productController');
 
-// Route to add a new product
-router.post('/add', productController.addProduct);
+// Add product
+router.post('/add', async (req, res) => {
+    try {
+        const { name, price, category } = req.body;
+        const newProduct = new Product({ name, price, category });
+        const product = await newProduct.save();
+        res.status(201).json(product);
+    } catch (error) {
+        res.status(500).json({ message: 'Error adding product', error });
+    }
+});
 
-// Route to get all products
-router.get('/', productController.getProducts);
+// Get all products
+router.get('/', async (req, res) => {
+    try {
+        const products = await Product.find();
+        res.status(200).json(products);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching products', error });
+    }
+});
 
-// Route to get a single product by ID
-router.get('/:id', productController.getProductById);
-
-// Route to update a product by ID
-router.put('/:id', productController.updateProduct);
-
-// Route to delete a product by ID
-router.delete('/:id', productController.deleteProduct);
+// Delete product
+router.delete('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Product.findByIdAndDelete(id);
+        res.status(200).json({ message: 'Product deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error deleting product', error });
+    }
+});
 
 module.exports = router;

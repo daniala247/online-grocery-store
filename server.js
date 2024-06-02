@@ -23,10 +23,13 @@ mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
-    console.log('Connected to MongoDB');
+    console.log('Connected to MongoDB', process.env.MONGO_URI);
 }).catch((error) => {
     console.log('Error connecting to MongoDB:', error);
 });
+
+// Use the auth routes
+app.use('/api/auth', require('./routes/auth'));
 
 // Use the product routes
 app.use('/api/products', require('./routes/products'));

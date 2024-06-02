@@ -47,6 +47,26 @@ document.addEventListener('DOMContentLoaded', () => {
     function addProductToList(product) {
         const li = document.createElement('li');
         li.textContent = `${product.name} - $${product.price} - ${product.category}`;
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', async () => {
+            try {
+                const response = await fetch(`http://localhost:3000/api/products/${product._id}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    productList.removeChild(li);
+                } else {
+                    console.error('Failed to delete product');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+
+        li.appendChild(deleteButton);
         productList.appendChild(li);
     }
 
