@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const server_url = "https://online-grocery-store-w7fa.vercel.app/api"
     const form = document.getElementById('add-product-form');
     const productList = document.getElementById('products');
 
@@ -10,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const category = form.category.value;
 
         try {
-            const response = await fetch('http://localhost:3000/api/products/add', {
+            const response = await fetch(server_url+'/products/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchProducts() {
         try {
-            const response = await fetch('http://localhost:3000/api/products');
+            const response = await fetch(server_url+'/products');
             if (response.ok) {
                 const products = await response.json();
                 products.forEach(product => addProductToList(product));
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteButton.textContent = 'Delete';
         deleteButton.addEventListener('click', async () => {
             try {
-                const response = await fetch(`http://localhost:3000/api/products/${product._id}`, {
+                const response = await fetch(`${server_url}/products/${product._id}`, {
                     method: 'DELETE'
                 });
 
