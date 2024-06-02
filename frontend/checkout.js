@@ -1,7 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const server_url = "http://localhost:3000/api";
     const checkoutForm = document.getElementById('add-checkout-form');
-    console.log(checkoutForm)
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (!token || !user) {
+        alert('Please log in to proceed to checkout.');
+        window.location.href = 'index.html';
+        return;
+    }
 
     checkoutForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -12,22 +19,21 @@ document.addEventListener('DOMContentLoaded', () => {
             city: checkoutForm.city.value,
             state: checkoutForm.state.value,
             zip: checkoutForm.zip.value,
-            cart: JSON.parse(localStorage.getItem('cart')) || []
+            cart: JSON.parse(localStorage.getItem(`cart_${user._id}`)) || []
         };
-        const formData = new FormData(checkoutForm)
-        console.log(formData)
 
         try {
             const response = await fetch(`${server_url}/orders/add`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': token
                 },
                 body: JSON.stringify(orderDetails)
             });
 
             if (response.ok) {
-                localStorage.removeItem('cart');
+                localStorage.removeItem(`cart_${user._id}`);
                 alert('Order placed successfully!');
                 window.location.href = 'orders.html';
             } else {

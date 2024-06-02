@@ -1,48 +1,19 @@
-
 document.addEventListener('DOMContentLoaded', () => {
-    const server_url = "http://localhost:3000/api"
+    const server_url = "http://localhost:3000/api";
     const registerForm = document.getElementById('register-form');
     const loginForm = document.getElementById('login-form');
-    const messageDiv = document.getElementById('message');
+    const registerMessageDiv = document.getElementById('register-message');
+    const loginMessageDiv = document.getElementById('login-message');
 
     // Handle registration
     registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const username = registerForm.username.value;
-        const password = registerForm.password.value;
+        const username = registerForm['username'].value;
+        const password = registerForm['password'].value;
 
         try {
-            const response = await fetch(server_url+'/auth/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password })
-            });
-
-            const data = await response.json();
-            if (response.ok) {
-                messageDiv.textContent = 'Registration successful. Please log in.';
-            } else {
-                messageDiv.textContent = `Error: ${data.message}`;
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            messageDiv.textContent = 'An error occurred during registration.';
-        }
-    });
-
-    // Handle login
-    loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const username = loginForm.username.value;
-        const password = loginForm.password.value;
-        
-        try {
-            console.log("login clicky")
-            const response = await fetch(server_url+'/auth/login', {
+            const response = await fetch(`${server_url}/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -53,16 +24,52 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             if (response.ok) {
                 localStorage.setItem('token', data.token);
-                messageDiv.textContent = 'Login successful.';
-                // Redirect to the main page or another authenticated page if needed
-                window.location.href = '../products.html';
-                // console.log(location.hostname)
+                localStorage.setItem('user', JSON.stringify(data.user));
+                registerMessageDiv.textContent = 'Registration successful. Redirecting...';
+                window.location.href = 'home.html';
             } else {
-                messageDiv.textContent = `Error: ${data.message}`;
+                registerMessageDiv.textContent = `Error: ${data.message}`;
             }
         } catch (error) {
             console.error('Error:', error);
-            messageDiv.textContent = 'An error occurred during login.';
+            registerMessageDiv.textContent = 'An error occurred during registration.';
+        }
+    });
+
+    // Handle login
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const username = loginForm['username'].value;
+        const password = loginForm['password'].value;
+
+        try {
+            const response = await fetch(`${server_url}/auth/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+                loginMessageDiv.textContent = 'Login successful. Redirecting...';
+
+                // Redirect based on role
+                if (data.user.role === 'admin') {
+                    window.location.href = 'products.html';
+                } else {
+                    window.location.href = 'home.html';
+                }
+            } else {
+                loginMessageDiv.textContent = `Error: ${data.message}`;
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            loginMessageDiv.textContent = 'An error occurred during login.';
         }
     });
 });

@@ -1,10 +1,20 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const server_url = "http://localhost:3000/api";
     const orderList = document.getElementById('order-list');
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        alert('Please log in to view your orders.');
+        window.location.href = 'index.html';
+    }
 
     async function fetchOrders() {
         try {
-            const response = await fetch(`${server_url}/orders`);
+            const response = await fetch(`${server_url}/orders`, {
+                headers: {
+                    'Authorization': token
+                }
+            });
             if (response.ok) {
                 const orders = await response.json();
                 orders.forEach(order => addOrderToList(order));

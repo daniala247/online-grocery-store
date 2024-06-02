@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const server_url = "http://localhost:3000/api";
     const productList = document.getElementById('products');
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (!token || !user) {
+        alert('Please log in to add items to your cart.');
+        window.location.href = 'auth.html';
+        return;
+    }
 
     async function fetchProducts() {
         try {
@@ -27,10 +35,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     window.addToCart = (productId) => {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cart = JSON.parse(localStorage.getItem(`cart_${user._id}`)) || [];
+        console.log(user._id)
         if (!cart.includes(productId)) {
             cart.push(productId);
-            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem(`cart_${user._id}`, JSON.stringify(cart));
             alert('Product added to cart');
         } else {
             alert('Product is already in the cart');

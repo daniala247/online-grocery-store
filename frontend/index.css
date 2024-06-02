@@ -1,52 +1,116 @@
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background: linear-gradient(to right, #C3E8BD, #9DDBAD); /* Tea green to Celadon gradient background */
+    height: 100vh;
+}
+
+header {
+    width: 100%;
+    background-color: #14281D; /* Dark green navigation bar */
+    padding: 10px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+nav {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: #FFFFFF; /* White text */
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+nav a:hover {
+    text-decoration: underline;
 }
 
 .container {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .form-container {
-    background-color: #fff;
+    background-color: rgba(20, 40, 29, 0.9); /* Dark green with some transparency */
     padding: 20px;
     margin: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Add transform for scale effect */
+}
+
+.form-container:hover {
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05); /* Slightly enlarge the box on hover */
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 10px;
+    color: #355834; /* Hunter green */
+}
+
+.separator span {
+    display: block;
+    font-size: 18px;
+    color: #14281D; /* Dark green */
+}
+
+h2 {
+    color: #FFFFFF; /* White text */
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
     margin: 10px 0 5px;
+    color: #FFFFFF; /* White text */
+    text-align: left;
 }
 
 input {
-    width: 100%;
+    width: calc(100% - 16px);
     padding: 8px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #355834; /* Hunter green border */
     border-radius: 5px;
 }
 
 button {
+    width: 100%;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
-    background-color: #28a745;
-    color: white;
+    background-color: #9DDBAD; /* Celadon button color */
+    color: #14281D; /* Dark green text */
     cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #C3E8BD; /* Tea green button hover color */
 }
 
-#message {
+#login-message,
+#register-message {
     margin-top: 20px;
     color: red;
+    text-align: center;
 }
