@@ -6,20 +6,26 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #355834; /* Hunter green */
     color: white;
     padding: 10px 0;
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
     margin: 0;
 }
 
+nav {
+    margin-top: 10px;
+}
+
 nav a {
     color: white;
     margin: 0 15px;
     text-decoration: none;
+    font-weight: bold;
 }
 
 nav a:hover {
@@ -30,23 +36,60 @@ main {
     padding: 20px;
 }
 
+#product-list h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 #product-list ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #product-list li {
     background-color: #fff;
-    padding: 10px;
-    margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 15px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
+    flex-direction: column;
     align-items: center;
+    transition: box-shadow 0.3s ease;
+}
+
+#product-list li:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #product-list img {
-    margin-right: 15px;
+    width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 10px; /* Rounded corners for images */
+}
+
+.product-details {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: bold; /* Bold product names */
+    color: #333;
+    margin-bottom: 10px; /* Space between product name and button */
+}
+
+.product-price {
+    font-size: 16px;
+    color: #666;
+    margin: 10px 0;
 }
 
 button {
@@ -56,7 +99,8 @@ button {
     background-color: #28a745;
     color: white;
     cursor: pointer;
-    margin-left: auto;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
