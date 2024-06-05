@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Online Grocery Store</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Online Grocery Store</h1>
+        </div>
+        <div class="form-container">
+            <h2>Create a new account</h2>
+            <form id="register-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                
+                <button type="submit">Register</button>
+                <p id="register-message" class="message"></p>
+            </form>
+            <div class="additional-options">
+                <div class="separator"></div>
+                <button class="login-button" onclick="window.location.href='index.html'">Log in to your account</button>
+            </div>
+        </div>
+    </div>
+    <script src="register.js"></script>
+</body>
+</html>

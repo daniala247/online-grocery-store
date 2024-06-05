@@ -6,20 +6,26 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #355834; /* Hunter green */
     color: white;
     padding: 10px 0;
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
     margin: 0;
 }
 
+nav {
+    margin-top: 20px; /* Add some space between the title and the navigation links */
+}
+
 nav a {
     color: white;
     margin: 0 15px;
     text-decoration: none;
+    font-weight: bold;
 }
 
 nav a:hover {
@@ -49,4 +55,9 @@ main {
 
 #orders p {
     margin: 5px 0;
+}
+
+#orders h2 {
+    text-align: center;
+    margin-bottom: 20px;
 }

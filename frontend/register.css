@@ -13,7 +13,7 @@ body {
 }
 
 .logo h1 {
-    color: #ffffff; /* Hunter green */
+    color: #355834; /* Hunter green */
     font-size: 48px;
     margin-bottom: 20px;
 }
@@ -61,7 +61,7 @@ button {
     padding: 12px 15px;
     border: none;
     border-radius: 5px;
-    background-color: #355834; /* Facebook blue */
+    background-color: #355834; /* Dark green */
     color: white;
     cursor: pointer;
     font-size: 16px;
@@ -84,20 +84,13 @@ button:hover {
 }
 
 .additional-options .separator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px 0;
-    color: #888888;
-    font-size: 14px;
+    height: 1px;
+    background-color: #dddfe2; /* Grey line */
+    margin: 20px 0;
 }
 
-.additional-options .separator span {
-    margin: 0 10px;
-}
-
-.register-button {
-    background-color: #14281D; /* Green */
+.login-button {
+    background-color: #14281D; /* Dark green */
     color: white;
     padding: 12px 15px;
     border: none;
@@ -107,6 +100,6 @@ button:hover {
     transition: background-color 0.3s ease;
 }
 
-.register-button:hover {
+.login-button:hover {
     background-color: #36a420;
 }
