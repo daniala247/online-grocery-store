@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const server_url = "http://localhost:3000/api";
+    const server_url = "https://online-grocery-store-w7fa.vercel.app/api";
     const productList = document.getElementById('products');
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user'));
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (existingItem) {
             existingItem.quantity++;
         } else {
-            cart.push({ productId, quantity: 1 });
+            cart.push(productId);
         }
         localStorage.setItem(`cart_${user._id}`, JSON.stringify(cart));
         alert('Product added to cart');

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const server_url = "http://localhost:3000/api";
+    const server_url = "https://online-grocery-store-w7fa.vercel.app/api";
     const loginForm = document.getElementById('login-form');
     const loginMessageDiv = document.getElementById('login-message');
 

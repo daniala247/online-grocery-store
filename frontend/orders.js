@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const server_url = "http://localhost:3000/api";
+    const server_url = "https://online-grocery-store-w7fa.vercel.app/api";
     const orderList = document.getElementById('order-list');
     const token = localStorage.getItem('token');
 

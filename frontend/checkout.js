@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const server_url = "http://localhost:3000/api";
+    const server_url = "https://online-grocery-store-w7fa.vercel.app/api";
     const checkoutForm = document.getElementById('add-checkout-form');
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user'));
