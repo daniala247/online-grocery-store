@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (!token) {
         alert('Please log in to view your orders.');
-        window.location.href = 'index.html';
+        window.location.href = 'home.html';
     }
 
     async function fetchOrders() {

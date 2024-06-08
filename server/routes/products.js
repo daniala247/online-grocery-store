@@ -35,6 +35,40 @@ router.post('/add', upload.single('image'), async (req, res) => {
     }
 });
 
+router.get('/search', async (req, res) => {
+    const query = req.query.query;
+    try {
+        let products;
+        if (query) {
+            products = await Product.find({ name: { $regex: query, $options: 'i' } });
+        } else {
+            products = await Product.find(); // Fetch all products if no query
+        }
+        res.status(200).json(products);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching products', error });
+    }
+});
+
+router.get('/grouped', async (req, res) => {
+    console.log("skjfnksjdnfskjdfnskjdfnskjdnfkjsdnfkjsndfjsndjkfnskdj36487yerpog5irhojfk[pl")
+    const query = req.query.query || '';
+    try {
+        const products = await Product.find({ name: { $regex: query, $options: 'i' } });
+        const groupedProducts = products.reduce((acc, product) => {
+            const category = product.category;
+            if (!acc[category]) {
+                acc[category] = [];
+            }
+            acc[category].push(product);
+            return acc;
+        }, {});
+        res.json(groupedProducts);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching products', error });
+    }
+});
+
 router.get('/', async (req, res) => {
 
     try {

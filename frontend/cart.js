@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!token || !user) {
         alert('Please log in to view your cart.');
-        window.location.href = 'auth.html';
+        window.location.href = 'home.html';
         return;
     }
 

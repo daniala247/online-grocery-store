@@ -1,36 +1,88 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #ffffff; /* White background */
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #355834; /* Hunter green */
-    color: white;
+    background-color: #ffffff; /* White background for the header */
+    color: #355834; /* Hunter green text color */
     padding: 10px 0;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
 }
 
 header h1 {
     margin: 0;
+    font-weight: bold;
+    color: #355834; /* Hunter green */
 }
 
 nav {
     margin-top: 20px; /* Add some space between the title and the navigation links */
+    display: flex;
+    justify-content: center;
+}
+
+nav .nav-container {
+    padding: 10px 20px;
+    background-color: #ffffff; /* White background for the navigation */
+    border: 1px solid #ccc; /* Light grey borders */
+    border-radius: 10px; /* Rounded box */
+    width: 80%; /* Adjust the width as needed */
+    max-width: 1200px; /* Ensure it doesn't get too wide */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Ensure search box appears correctly */
 }
 
 nav a {
-    color: white;
-    margin: 0 15px;
+    color: black; /* Black text color */
+    margin: 0 10px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: normal; /* Remove bold */
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-button {
+    background-color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-top: 0;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #f9f9f9;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.search-box {
+    display: none; /* Initially hidden */
+    padding: 10px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    font-size: 16px;
 }
 
 main {
@@ -40,9 +92,22 @@ main {
 #product-list h2 {
     text-align: center;
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
-#product-list ul {
+.category-section {
+    margin-bottom: 40px;
+}
+
+.category-header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #355834; /* Hunter green */
+}
+
+.category-list {
     list-style: none;
     padding: 0;
     display: flex;
@@ -50,8 +115,13 @@ main {
     justify-content: center;
 }
 
-#product-list li {
-    background-color: #fff;
+#product-list ul{
+    padding: 0;
+}
+
+#product-list li,
+.category-list li {
+    background-color: #eeeeee; /* Light grey background for the product boxes */
     border: 1px solid #ccc;
     border-radius: 10px;
     margin: 10px;
@@ -64,11 +134,13 @@ main {
     transition: box-shadow 0.3s ease;
 }
 
-#product-list li:hover {
+#product-list li:hover,
+.category-list li:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-#product-list img {
+#product-list img,
+.category-list img {
     width: 100px;
     height: auto;
     margin-bottom: 15px;
@@ -77,7 +149,7 @@ main {
 
 .product-details {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Increased space between product details and button */
 }
 
 .product-name {
@@ -102,6 +174,7 @@ button {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    margin-top: 20px; /* Add margin above the button */
 }
 
 button:hover {
