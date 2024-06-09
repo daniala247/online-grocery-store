@@ -1,6 +1,6 @@
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
 }
@@ -61,10 +61,11 @@ main {
     padding: 2em;
     width: 100%;
     max-width: 1200px;
+    margin: 0 auto; /* Center main content */
 }
 
 .card {
-    background-color: rgba(255, 255, 255, 0.9); /* White with some transparency */
+    background-color: #eeeeee; /* Light grey background */
     padding: 2em;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -111,7 +112,7 @@ button:hover {
 }
 
 #product-list li {
-    background-color: #fff;
+    background-color: #ffffff;
     margin: 0.5em 0;
     padding: 1em;
     border: 1px solid #ddd;

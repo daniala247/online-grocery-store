@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const searchButton = document.getElementById('search-button');
     const searchBox = document.getElementById('search-box');
-    
 
     searchButton.addEventListener('click', () => {
         if (searchBox.style.display === 'none' || searchBox.style.display === '') {
@@ -17,8 +16,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   //  if (!token || !user) {
     //    alert('Please log in to add items to your cart.');
-   //     window.location.href = 'index.html';
-   //     return;
+      //  window.location.href = 'index.html';
+        //return;
    // }
 
     async function fetchGroupedProducts(query = '') {
@@ -84,16 +83,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
 
     searchBox.addEventListener('keyup', async (event) => {
-        if (event.key === 'Enter') {
-            const query = searchBox.value.trim();
-            window.location.href = `home.html?search=${encodeURIComponent(query)}`;
-        }
+        const query = searchBox.value.trim();
+        fetchGroupedProducts(query);
     });
 
-    // Use the search query from the URL if available
-    if (searchQuery) {
-        fetchGroupedProducts(searchQuery);
-    } else {
-        fetchGroupedProducts();
-    }
+    fetchGroupedProducts();
 });

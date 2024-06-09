@@ -11,22 +11,37 @@
         <h1>GREEN PANTRY</h1>
         <nav>
             <div class="nav-container">
-                <a href="products.html">Products</a>
-                <a href="adminprofile.html">Profile</a>
+                <a href="products.html">ADD PRODUCTS</a>
+                <a href="adminprofile.html">PROFILE</a>
+                
             </div>
         </nav>
     </header>
     <main>
-        <section id="profile-section" class="profile-card">
-            <h2>Your Profile</h2>
-            <div id="profile-details">
-                <p><strong>Username:</strong> <span id="username"></span></p>
-                <p><strong>Password:</strong> <span id="password"></span></p>
-                <p><strong>Role:</strong> <span id="role"></span></p>
-            </div>
-            <button id="logout-button">Logout</button>
+        <section id="product-form-card" class="card">
+            <h2>Add New Product</h2>
+            <form id="add-product-form">
+                <label for="name">Product Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" required>
+                
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category" required>
+
+                <label for="image">Product Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+                
+                <button type="submit">Add Product</button>
+            </form>
+        </section>
+        
+        <section id="product-list-card" class="card">
+            <h2>Product List</h2>
+            <ul id="products"></ul>
         </section>
     </main>
-    <script src="profile.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
