@@ -18,6 +18,13 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+header .logo {
+    max-height: 200px; /* Adjust the height as needed */
+    max-width: 300px;
+    margin: 0 auto; /* Center the logo */
+    display: block;
+}
+
 header h1 {
     margin: 0;
     font-weight: bold;

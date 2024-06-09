@@ -14,8 +14,8 @@ header {
 }
 
 header .logo {
-    max-height: 100px; /* Adjust the height as needed */
-    max-width: 100px;
+    max-height: 200px; /* Adjust the height as needed */
+    max-width: 300px;
     margin: 0 auto; /* Center the logo */
     display: block;
 }

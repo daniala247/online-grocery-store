@@ -4,7 +4,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    background: linear-gradient(to right , #355834, #9DDBAD);
+    background: #ffffff;
     height: 100vh;
 }
 
@@ -12,17 +12,20 @@ body {
     text-align: center;
 }
 
-.logo h1 {
-    color: #ffffff; /* Hunter green */
-    font-size: 48px;
+.logo {
     margin-bottom: 20px;
 }
 
+.logo-image {
+    max-height: 100px; /* Adjust the height as needed */
+    width: auto;
+}
+
 .form-container {
-    background-color: #ffffff;
+    background-color: #eeeeee;
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.489);
     width: 400px;
     text-align: left;
 }
@@ -61,7 +64,7 @@ button {
     padding: 12px 15px;
     border: none;
     border-radius: 5px;
-    background-color: #355834; /* Dark green */
+    background-color: #31b55d; /* Hunter green */
     color: white;
     cursor: pointer;
     font-size: 16px;
@@ -84,9 +87,16 @@ button:hover {
 }
 
 .additional-options .separator {
-    height: 1px;
-    background-color: #dddfe2; /* Grey line */
-    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+    color: #888888;
+    font-size: 14px;
+}
+
+.additional-options .separator span {
+    margin: 0 10px;
 }
 
 .login-button {
