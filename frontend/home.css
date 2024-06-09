@@ -13,10 +13,11 @@ header {
     width: 100%;
 }
 
-header h1 {
-    margin: 0;
-    font-weight: bold;
-    color: #355834; /* Hunter green */
+header .logo {
+    max-height: 100px; /* Adjust the height as needed */
+    max-width: 100px;
+    margin: 0 auto; /* Center the logo */
+    display: block;
 }
 
 nav {
@@ -115,7 +116,7 @@ main {
     justify-content: center;
 }
 
-#product-list ul{
+#product-list ul {
     padding: 0;
 }
 
