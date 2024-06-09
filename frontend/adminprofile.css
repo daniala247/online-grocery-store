@@ -1,6 +1,6 @@
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background: linear-gradient(to right , #355834, #9DDBAD); /* Green gradient background */
+    background: #ffffff;
     margin: 0;
     padding: 0;
     display: flex;
@@ -74,10 +74,10 @@ main {
 }
 
 .profile-card {
-    background-color: rgba(255, 255, 255, 0.9); /* White with some transparency */
+    background-color: #eeeeee;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.489);
     text-align: center;
     width: 300px;
 }
@@ -85,7 +85,7 @@ main {
 #profile-details p {
     margin: 10px 0;
     font-size: 1.1em;
-    color: #355834; /* Hunter green */
+    color: #000000; /* Hunter green */
 }
 
 button {
